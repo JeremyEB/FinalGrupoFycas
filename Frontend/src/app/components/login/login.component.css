@@ -1,0 +1,15 @@
+.container-login{
+    padding:70px;
+    height:60vh;
+}
+
+.container-login-2{
+    width:30%;
+    margin:auto;
+    height:90%;
+    padding:20px;
+}
+
+label{
+    font-size:26px;
+}

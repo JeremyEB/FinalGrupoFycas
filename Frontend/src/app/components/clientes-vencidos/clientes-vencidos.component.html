@@ -1,0 +1,47 @@
+<app-header2></app-header2>
+    <div class="container">
+        <h1>Buscar factura</h1>
+        <input type="number" class="form-control" [formControl]="control">
+        <br>
+        <table class="table table-hover table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th>ID_Factura</th>
+                    <th>Monto Solicitado</th>
+                    <th>Tasa</th>
+                    <th>Interes</th>
+                    <th>Cuotas</th>
+                    <th>Cuotas Mensuales</th>
+                    <th>Seleccionar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let element of dataTable">
+                    <td>{{element.idFactura}}</td>
+                    <td>{{element.montoSolicitado}}</td>
+                    <td>{{element.tasa}}</td>
+                    <td>{{element.interes}}</td>
+                    <td>{{element.cuotas}}</td>
+                    <td>{{element.cuotasMensuales}}</td>
+                    <td>
+                        <button type="button" class="btn btn-success" (click)="onSetData(element)">Seleccionar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <label>idFactura</label>
+        <input type="number" class="form-control" [(ngModel)]="u_factura.idFactura">
+        <label>Monto Solicitado</label>
+        <input type="number" class="form-control" [(ngModel)]="u_factura.montoSolicitado">
+        <label>Tasa</label>
+        <input type="number" class="form-control" [(ngModel)]="u_factura.tasa">
+        <label>Interes</label>
+        <input type="number" class="form-control" [(ngModel)]="u_factura.interes">
+        <label>Cuotas</label>
+        <input type="number" class="form-control" [(ngModel)]="u_factura.cuotas">
+        <label>Cuotas Mensuales</label>
+        <input type="number" class="form-control" [(ngModel)]="u_factura.cuotasMensuales">
+        <br>
+        <button type="button" class="btn btn-warning" (click)="onUpdate(u_factura)">Editar</button>
+    </div>
+<app-footer></app-footer>   

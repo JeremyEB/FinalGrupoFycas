@@ -1,0 +1,132 @@
+<app-header2></app-header2>
+<br>
+<div class="container-body">
+    <div class="container-agregar">
+        <h3>Agregar Clientes</h3>
+        <label>Nombre:</label>
+        <input type="text" placeholder="Nombre" class="form-control" [(ngModel)]="c_clientes.nombre">
+        <label>Apellido:</label>
+        <input type="text" placeholder="Apellido" class="form-control" [(ngModel)]="c_clientes.apellido">
+        <label>Telefono:</label>
+        <input type="tel" placeholder="Telefono(xxx-xxx-xxxx)" class="form-control" maxlength="12" [(ngModel)]="c_clientes.telefono">
+        <label>Cedula:</label>
+        <input type="text" placeholder="Cedula(xxx-xxxxxxx-x)" class="form-control" maxlength="13" [(ngModel)]="c_clientes.cedula">
+        <br>
+        <button type="submit" class="btn btn-outline-success" (click)="onAddClientes(c_clientes)">Agregar Cliente</button>
+    </div>
+    <br>
+    <br>
+    <button type="button" class="btn btn-info text-white m-2" (click)="openFullscreen(CRUD_Cliente)">Mas Opciones</button>
+    <button type="button" class="btn btn-success text-white" (click)="openFullscreen(All_Customer)">Ver todos los clientes</button>
+    <!--Modal CRUD Cliente-->
+    <ng-template #CRUD_Cliente let-modal>
+        <div class="modal-header">
+            <p class="modal-title">Perfil Cliente</p>
+            <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="container-acciones">
+                <h3>Buscar Cliente</h3>
+                <input type="text" class="form-control" placeholder="Ingresar Cedula" [formControl]="control" maxlength="13">
+                <br>
+                <table class="table table-hover table-bordered table-sm">
+                    <thead>
+                        <tr>
+                            <th>ID_Cliente</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Cedula</th>
+                            <th>Telefono</th>
+                            <th>Seleccionar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let element of clientes">
+                            <td>{{element.idCliente}}</td>
+                            <td>{{element.nombre}}</td>
+                            <td>{{element.apellido}}</td>
+                            <td>{{element.cedula}}</td>
+                            <td>{{element.telefono}}</td>
+                            <td>
+                                <button type="button" class="btn btn-warning m-2" (click)="onSetData(element)" (click)="modal2.open(Modificar)">Modificar</button>
+                                <button type="button" class="btn btn-danger" (click)="eliminarCliente()">Eliminar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="modal.close()">Cerrar</button>
+        </div>
+    </ng-template>
+    <ng-template #All_Customer let-modal>
+        <div class="modal-header">
+            <p class="modal-title">Ver todos los clientes</p>
+            <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="container-acciones">
+                <h3>Ver todos los clientes</h3>
+                <br>
+                <table class="table table-hover table-bordered table-sm">
+                    <thead>
+                        <tr>
+                            <th>ID_Cliente</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Cedula</th>
+                            <th>Telefono</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let element of dataTable">
+                            <td>{{element.idCliente}}</td>
+                            <td>{{element.nombre}}</td>
+                            <td>{{element.apellido}}</td>
+                            <td>{{element.cedula}}</td>
+                            <td>{{element.telefono}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="modal.close()">Cerrar</button>
+        </div>
+    </ng-template>
+    <!--Modificar Modal-->
+    <ng-template #Modificar let-modal>
+        <div class="modal-header">
+            <p class="modal-title">Modificando Cliente</p>
+            <button class="close" aria-label="close" type="button" (click)="clear()" (click)="modal.dismiss()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="container-agregar">
+                <h3>Modificar Datos</h3>
+                <label>Id_Cliente:</label>
+                <input type="number" class="form-control" disabled="true" [(ngModel)]="c_clientes.idCliente">
+                <label>Nombre:</label>
+                <input type="text" placeholder="Nombre y Apellido" class="form-control" [(ngModel)]="c_clientes.nombre">
+                <label>Apellido:</label>
+                <input type="text" placeholder="Nombre y Apellido" class="form-control" [(ngModel)]="c_clientes.apellido">
+                <label>Telefono:</label>
+                <input type="tel" placeholder="Telefono(xxx-xxx-xxxx)" class="form-control" maxlength="12" [(ngModel)]="c_clientes.telefono">
+                <label>Cedula:</label>
+                <input type="text" placeholder="Cedula(xxx-xxxxxxx-x)" class="form-control" maxlength="13" [(ngModel)]="c_clientes.cedula">
+                <br>
+                <button type="submit" class="btn btn-outline-warning" (click)="onUpdateClientes(c_clientes)">Modificar Cliente</button>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="clear()" (click)="modal.close()">Cerrar</button>
+        </div>
+    </ng-template>
+</div>
+<app-footer></app-footer>

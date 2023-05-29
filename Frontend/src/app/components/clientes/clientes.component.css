@@ -1,0 +1,22 @@
+.container-body{
+    width:80%;
+    margin:auto;
+}
+
+label{
+    font-weight:bold;
+}
+
+h3{
+    text-align:center;
+}
+
+.container-acciones{
+    width:70%;
+    margin:auto;
+}
+
+.container-agregar{
+    width:60%;
+    margin:auto;
+}
